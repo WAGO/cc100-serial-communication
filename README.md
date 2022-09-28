@@ -1,5 +1,5 @@
 # cc100-serial-communication
-This repository shows how the serial interface of the CC100 can be integrated into a Docker container (Node RED). For this purpose, the WAGO Energy Meter (MID) is connected as an example. The communication between Node RED and the MID is based on Modbus RTU.
+This repository shows how the serial interface of the CC100 can be integrated into a Docker container (Node-RED). For this purpose, the WAGO Energy Meter (MID) is connected as an example. The communication between Node-RED and the MID is based on Modbus RTU.
 
 <p align="center">
 <img src="images/concept.png"
@@ -7,7 +7,7 @@ This repository shows how the serial interface of the CC100 can be integrated in
      title="Concept of serial communication with the CC100"/>
 </p>
 
-## Prerequisities
+## Prerequisites
 * WAGO CC100 (751-9301) 
     - install docker and move docker "DATA-ROOT" to an inserted SD card
     - see [cc100-tutorial](https://www.youtube.com/watch?v=ZIcp3H0h6q0) for help
@@ -38,7 +38,7 @@ docker ps           # to see all running containers (no container should run)
 docker images       # to see all preinstalled images
 </code></pre>
 
-## Integration of the serial interface into the Node RED container
+## Integration of the serial interface into the Node-RED container
 <pre><code>docker run -d \
 --name node-red \
 --restart always \
@@ -50,10 +50,10 @@ docker images       # to see all preinstalled images
 nodered/node-red
 </code></pre>
 
-> The serial interface of the CC100 is located on /dev/ttySTM1. By bind-mounting this interface, the Node RED container gains access to it. In this case /dev/ttySTM1 is replicated to the /dev/serial directory. /dev/serial is created when the container is started. The directory for the volume mount is basically arbitrary, the path must only be passed correctly to Node RED in the following steps.
+> The serial interface of the CC100 is located on /dev/ttySTM1. By bind-mounting this interface, the Node-RED container gains access to it. In this case /dev/ttySTM1 is replicated to the /dev/serial directory. /dev/serial is created when the container is started. The directory for the volume mount is basically arbitrary, the path must only be passed correctly to Node-RED in the following steps.
 
 ## Read MID data via Modbus RTU
-1. Open Node RED by typing **\<ip of your PFC>\:1880** into your browser
+1. Open Node-RED by typing **\<ip of your PFC>\:1880** into your browser
 2. Install the **node-red-contrib-modbus** lib (burger menu - Manage palette - Install)
 3. Drag and drop the **Modbus Read** node into your flow
 
@@ -84,7 +84,7 @@ nodered/node-red
      title="Configuration MID as Modbus Slave"/>
 </p>
 
-> For **Serial Port**, enter the path that leads to the directory that was replicated with the Node RED start command.
+> For **Serial Port**, enter the path that leads to the directory that was replicated with the Node-RED start command.
 > The information about the **Baud rate**, the **Data bits**, the **Stop bits** and the **Parity** was taken from the data sheet of the MID.
 
 6. Connect a debug node to the first output of the modbus read node
@@ -92,8 +92,8 @@ nodered/node-red
 <p align="center">
 <img src="images/flow_read_raw_data.png"
      width="400"
-     alt="Node RED Flow Read Raw MID Data"
-     title="Node RED Flow Read Raw MID Data"/>
+     alt="Node-RED Flow Read Raw MID Data"
+     title="Node-RED Flow Read Raw MID Data"/>
 </p>
 
 7. Deploy the flow
@@ -101,10 +101,12 @@ nodered/node-red
 
 <p align="center">
 <img src="images/debug_console_raw_data.png"
-     width="200"
+     width="250"
      alt="Debug Console Raw Data"
      title="Debug Console Raw Data"/>
 </p>
+
+> You can adapt the flow to your needs by reading other registers as well. The addresses of all registers that can be read can be found in the data sheet of the MID. Please note that the addresses for the Modbus read nodes must be specified as decimal values.
 
 ## Interpret MID data
 1. Install the **node-red-contrib-buffer-parser** lib
@@ -132,8 +134,8 @@ nodered/node-red
 <p align="center">
 <img src="images/flow_read_data.png"
      width="600"
-     alt="Node RED Flow Read MID Data"
-     title="Node RED Flow Read MID Data"/>
+     alt="Node-RED Flow Read MID Data"
+     title="Node-RED Flow Read MID Data"/>
 </p>
 
 5. Deploy the flow
@@ -141,13 +143,13 @@ nodered/node-red
 
 <p align="center">
 <img src="images/debug_console_interpreted_data.png"
-     width="200"
+     width="250"
      alt="Debug Console Interpreted Data"
      title="Debug Console Interpreted Data"/>
 </p>
 
-## Node RED flow
-You can also import the flow shown above directly. Make sure that the replicated path for the serial port in the Node RED start command matches the serial port of the Modbus slave in the Modbus Read node.
+## Node-RED flow
+You can also import the flow shown above directly. Make sure that the replicated path for the serial port in the Node-RED start command matches the serial port of the Modbus slave in the Modbus Read node.
 
 <pre><code>[
     {
