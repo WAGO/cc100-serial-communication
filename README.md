@@ -291,7 +291,9 @@ You can also import the flow shown above directly. Make sure that the replicated
 </code></pre>
 
 ## Further CC100 projects
-[CC100 video tutorials](https://www.youtube.com/channel/UCV2GhmZPWc5JU73ktI1St4Q/videos)
+* [CC100 video tutorials](https://www.youtube.com/channel/UCV2GhmZPWc5JU73ktI1St4Q/videos)
+* [cc100-mid-dashboard](https://github.com/WAGO/cc100-mid-dashboard)
+* [cc100-energy-dashboard](https://github.com/WAGO/cc100-energy-dashboard)
 
 ## Sources
 * [WAGO CC100 data sheet](https://www.wago.com/global/plcs-%E2%80%93-controllers/compact-controller-100/p/751-9301)
