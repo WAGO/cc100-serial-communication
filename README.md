@@ -53,7 +53,7 @@ wagoautomation/node-red-cc100:1.0.0
 > The serial interface of the CC100 is located on /dev/ttySTM1. By bind-mounting this interface, the Node-RED container gains access to it. In this case /dev/ttySTM1 is replicated to the /dev/serial directory. /dev/serial is created when the container is started. The directory for the volume mount is basically arbitrary, the path must only be passed correctly to Node-RED in the following steps.
 
 ## Read MID data via Modbus RTU
-1. Open Node-RED by typing **\<ip of your PFC>\:1880** into your browser
+1. Open Node-RED by typing **\<ip of your CC100>\:1880** into your browser
 2. Drag and drop the **Modbus Read** node into your flow
 
 <p align="center">
