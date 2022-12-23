@@ -8,7 +8,7 @@ This repository shows how the serial interface of the CC100 can be integrated in
 </p>
 
 ## Prerequisites
-* WAGO CC100 (751-9301) 
+* WAGO CC100 (751-9301) => !!! please use Firmware 23 !!!
     - install docker and move docker "DATA-ROOT" to an inserted SD card
     - see [cc100-tutorial](https://www.youtube.com/watch?v=ZIcp3H0h6q0) for help
     - [docker-ipk](https://github.com/WAGO/docker-ipk)
