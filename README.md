@@ -47,7 +47,7 @@ docker images       # to see all preinstalled images
 -p 1880:1880 \
 -v node_red_user_data:/data \
 -v /dev/ttySTM1:/dev/serial \
-nodered/node-red
+wagoautomation/node-red-cc100:1.0.0
 </code></pre>
 
 > The serial interface of the CC100 is located on /dev/ttySTM1. By bind-mounting this interface, the Node-RED container gains access to it. In this case /dev/ttySTM1 is replicated to the /dev/serial directory. /dev/serial is created when the container is started. The directory for the volume mount is basically arbitrary, the path must only be passed correctly to Node-RED in the following steps.
