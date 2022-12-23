@@ -54,8 +54,7 @@ wagoautomation/node-red-cc100:1.0.0
 
 ## Read MID data via Modbus RTU
 1. Open Node-RED by typing **\<ip of your PFC>\:1880** into your browser
-2. Install the **node-red-contrib-modbus** lib (burger menu - Manage palette - Install)
-3. Drag and drop the **Modbus Read** node into your flow
+2. Drag and drop the **Modbus Read** node into your flow
 
 <p align="center">
 <img src="images/modbus_read_node.png"
